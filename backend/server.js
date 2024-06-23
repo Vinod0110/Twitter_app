@@ -16,7 +16,7 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET,
 })
 
-app.use(express.json({limit:"5mb"})); // to parse req.body/ and limit shouldn't be to high to prevent DOS
+app.use(express.json({limit:"15mb"})); // to parse req.body/ and limit shouldn't be to high to prevent DOS
 app.use(express.urlencoded({extended: true})); // to parse from data(urlencoded)
 app.use(cookieParser());
 // console.log(process.env.MONGO_URI)
