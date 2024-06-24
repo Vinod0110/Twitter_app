@@ -1,15 +1,12 @@
 import Notification from "../models/notificationModel.js";
 
 export const getNotifications = async (req, res) => {
-  console.log("getNotifications",getNotifications);
   try {
     const userId = req.user._id;
-    console.log("User ID:", userId);
     const notifications = await Notification.find({to: userId }).populate({
       path: "from",
       select: "username profileImg",
     });
-  console.log("notifications",notifications);
 
     await Notification.updateMany({to:userId},{read:true});
     res.status(200).json( notifications);
